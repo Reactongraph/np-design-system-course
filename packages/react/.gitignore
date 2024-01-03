@@ -18,7 +18,7 @@ Here's a simple example of what you might put in a .gitignore file:
 plaintext
 Copy code
 # Ignore node_modules directory
-/node_modules
+node_modules/
 lib/
 
 # Ignore log files and other generated files
