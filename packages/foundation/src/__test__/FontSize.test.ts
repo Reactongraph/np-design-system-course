@@ -1,3 +1,5 @@
+import FontSize from '../FontSize'
 
-
-test('snapshot of fontsizes', () => {})
+test('snapshot of fontsizes', () => {
+    expect(FontSize).toMatchSnapshot()
+})
