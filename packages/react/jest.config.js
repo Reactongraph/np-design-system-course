@@ -3,3 +3,4 @@ module.exports = {
     testRegex: '(/.*\\.test)\\.(ts|tsx)$',
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts']
 }
+
