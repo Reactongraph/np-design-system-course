@@ -28903,6 +28903,44 @@ const Color = ({
   });
 };
 exports.C = Color;
+},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@designsystem/react/lib/Margin-D3UMKZ4Q.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.M = void 0;
+var _react = _interopRequireDefault(require("react"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const Margin = ({
+  space = 'xxxs',
+  children,
+  left,
+  right,
+  top,
+  bottom
+}) => {
+  let className = ``;
+  if (!left && !right && !top && !bottom) {
+    className = `dse-margin-${space}`;
+  }
+  if (left) {
+    className = `${className} dse-margin-left-${space}`;
+  }
+  if (right) {
+    className = `${className} dse-margin-right-${space}`;
+  }
+  if (top) {
+    className = `${className} dse-margin-top-${space}`;
+  }
+  if (bottom) {
+    className = `${className} dse-margin-bottom-${space}`;
+  }
+  return _react.default.createElement("div", {
+    className: className
+  }, children);
+};
+exports.M = Margin;
 },{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@designsystem/react/lib/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -28921,10 +28959,17 @@ Object.defineProperty(exports, "Color", {
     return _Color7TqQC9u.C;
   }
 });
+Object.defineProperty(exports, "Margin", {
+  enumerable: true,
+  get: function () {
+    return _MarginD3UMKZ4Q.M;
+  }
+});
 var _ButtonLUnlYWN = require("./Button-LUnlYWN6.js");
 var _Color7TqQC9u = require("./Color-7TqQC-9u.js");
+var _MarginD3UMKZ4Q = require("./Margin-D3UMKZ4Q.js");
 require("react");
-},{"./Button-LUnlYWN6.js":"../../../node_modules/@designsystem/react/lib/Button-LUnlYWN6.js","./Color-7TqQC-9u.js":"../../../node_modules/@designsystem/react/lib/Color-7TqQC-9u.js","react":"../../../node_modules/react/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./Button-LUnlYWN6.js":"../../../node_modules/@designsystem/react/lib/Button-LUnlYWN6.js","./Color-7TqQC-9u.js":"../../../node_modules/@designsystem/react/lib/Color-7TqQC-9u.js","./Margin-D3UMKZ4Q.js":"../../../node_modules/@designsystem/react/lib/Margin-D3UMKZ4Q.js","react":"../../../node_modules/react/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -28987,6 +29032,12 @@ module.exports = reloadCSS;
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
+},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../node_modules/@designsystem/scss/lib/Margin.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
 },{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"App.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -28998,6 +29049,7 @@ var _react = _interopRequireDefault(require("react"));
 var _react2 = require("@designsystem/react");
 require("@designsystem/scss/lib/Button.css");
 require("@designsystem/scss/lib/Utilities.css");
+require("@designsystem/scss/lib/Margin.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var App = function App() {
   return _react.default.createElement("div", null, _react.default.createElement(_react2.Button, {
@@ -29006,10 +29058,17 @@ var App = function App() {
     hexCode: "#000",
     height: "xl",
     width: "xl"
-  }));
+  }), _react.default.createElement("div", null, _react.default.createElement(_react2.Margin, {
+    space: "xl",
+    left: true
+  }, _react.default.createElement(_react2.Color, {
+    hexCode: "gray",
+    height: "xl",
+    width: "xl"
+  }))));
 };
 var _default = exports.default = App;
-},{"react":"../../../node_modules/react/index.js","@designsystem/react":"../../../node_modules/@designsystem/react/lib/index.js","@designsystem/scss/lib/Button.css":"../../../node_modules/@designsystem/scss/lib/Button.css","@designsystem/scss/lib/Utilities.css":"../../../node_modules/@designsystem/scss/lib/Utilities.css"}],"index.tsx":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js","@designsystem/react":"../../../node_modules/@designsystem/react/lib/index.js","@designsystem/scss/lib/Button.css":"../../../node_modules/@designsystem/scss/lib/Button.css","@designsystem/scss/lib/Utilities.css":"../../../node_modules/@designsystem/scss/lib/Utilities.css","@designsystem/scss/lib/Margin.css":"../../../node_modules/@designsystem/scss/lib/Margin.css"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -29043,7 +29102,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44711" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37977" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
