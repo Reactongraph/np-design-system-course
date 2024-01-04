@@ -8,6 +8,9 @@ import "@designsystem/scss/lib/Utilities.css";
 import { Margin } from "@designsystem/react";
 import "@designsystem/scss/lib/Margin.css";
 
+import { Text } from "@designsystem/react";
+import "@designsystem/scss/lib/Text.css";
+
 const App = () => {
   return (
     <div>
@@ -18,6 +21,7 @@ const App = () => {
           <Color hexCode="gray" height="xl" width="xl" />
         </Margin>
       </div>
+      <Text size="xl">This is Text Component</Text>
     </div>
   );
 };
