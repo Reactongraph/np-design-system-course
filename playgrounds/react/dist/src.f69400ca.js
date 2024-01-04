@@ -28880,6 +28880,29 @@ const Button = ({
   }, label);
 };
 exports.B = Button;
+},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@designsystem/react/lib/Color-7TqQC-9u.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.C = void 0;
+var _react = _interopRequireDefault(require("react"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const Color = ({
+  hexCode,
+  height,
+  width
+}) => {
+  const className = `dse-width-${width} dse-height-${height} `;
+  return _react.default.createElement("div", {
+    style: {
+      backgroundColor: hexCode
+    },
+    className: className
+  });
+};
+exports.C = Color;
 },{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@designsystem/react/lib/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -28892,9 +28915,16 @@ Object.defineProperty(exports, "Button", {
     return _ButtonLUnlYWN.B;
   }
 });
+Object.defineProperty(exports, "Color", {
+  enumerable: true,
+  get: function () {
+    return _Color7TqQC9u.C;
+  }
+});
 var _ButtonLUnlYWN = require("./Button-LUnlYWN6.js");
+var _Color7TqQC9u = require("./Color-7TqQC-9u.js");
 require("react");
-},{"./Button-LUnlYWN6.js":"../../../node_modules/@designsystem/react/lib/Button-LUnlYWN6.js","react":"../../../node_modules/react/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./Button-LUnlYWN6.js":"../../../node_modules/@designsystem/react/lib/Button-LUnlYWN6.js","./Color-7TqQC-9u.js":"../../../node_modules/@designsystem/react/lib/Color-7TqQC-9u.js","react":"../../../node_modules/react/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -28951,6 +28981,12 @@ module.exports = reloadCSS;
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
+},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../node_modules/@designsystem/scss/lib/Utilities.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
 },{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"App.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -28961,14 +28997,19 @@ exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _react2 = require("@designsystem/react");
 require("@designsystem/scss/lib/Button.css");
+require("@designsystem/scss/lib/Utilities.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var App = function App() {
   return _react.default.createElement("div", null, _react.default.createElement(_react2.Button, {
     label: "Example Button"
+  }), _react.default.createElement(_react2.Color, {
+    hexCode: "#000",
+    height: "xl",
+    width: "xl"
   }));
 };
 var _default = exports.default = App;
-},{"react":"../../../node_modules/react/index.js","@designsystem/react":"../../../node_modules/@designsystem/react/lib/index.js","@designsystem/scss/lib/Button.css":"../../../node_modules/@designsystem/scss/lib/Button.css"}],"index.tsx":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js","@designsystem/react":"../../../node_modules/@designsystem/react/lib/index.js","@designsystem/scss/lib/Button.css":"../../../node_modules/@designsystem/scss/lib/Button.css","@designsystem/scss/lib/Utilities.css":"../../../node_modules/@designsystem/scss/lib/Utilities.css"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -29002,7 +29043,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44219" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44711" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
