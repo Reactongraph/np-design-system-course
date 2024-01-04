@@ -29017,7 +29017,7 @@ const Text = ({
   }, children);
 };
 exports.T = Text;
-},{"react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/@designsystem/react/lib/Select-yW1BMbzQ.js":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/@designsystem/react/lib/Select-QX_CotrD.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29034,21 +29034,33 @@ const Select = ({
   onOptionSelected: handler
 }) => {
   const [isOpen, setIsOpen] = (0, _react.useState)(false);
+  const [selectedIndex, setSelectedIndex] = (0, _react.useState)(null);
+  const labelRef = (0, _react.useRef)(null);
+  const [overlayTop, setOverlayTop] = (0, _react.useState)(0);
   const onOptionSelected = (option, optionIndex) => {
     if (handler) {
       handler(option, optionIndex);
     }
+    setSelectedIndex(optionIndex);
     setIsOpen(false);
   };
   const onLabelClick = () => {
     setIsOpen(!isOpen);
   };
+  (0, _react.useEffect)(() => {
+    setOverlayTop((labelRef.current?.offsetHeight || 0) + 10);
+  }, [labelRef.current?.offsetHeight]);
+  let selectedOption = null;
+  if (selectedIndex !== null) {
+    selectedOption = options[selectedIndex];
+  }
   return _react.default.createElement("div", {
     className: "dse-select"
   }, _react.default.createElement("button", {
     className: "dse-select__label",
+    ref: labelRef,
     onClick: () => onLabelClick()
-  }, _react.default.createElement(_TextG4flcjSI.T, null, label), _react.default.createElement("svg", {
+  }, _react.default.createElement(_TextG4flcjSI.T, null, selectedOption === null ? label : selectedOption.label), _react.default.createElement("svg", {
     width: "1rem",
     height: "1rem",
     fill: "none",
@@ -29060,12 +29072,16 @@ const Select = ({
   }, _react.default.createElement("path", {
     d: "M19 9l-7 7-7-7"
   }))), _react.default.createElement("ul", {
+    style: {
+      top: overlayTop
+    },
     id: "dse-select-list",
     className: `dse-select__overlay ${isOpen ? "dse-select__overlay--open" : ""}`
   }, options.map((option, optionIndex) => {
+    const isSelected = selectedIndex === optionIndex;
     return _react.default.createElement("li", {
       onClick: () => onOptionSelected(option, optionIndex)
-    }, _react.default.createElement(_TextG4flcjSI.T, null, option.label), _react.default.createElement("svg", {
+    }, _react.default.createElement(_TextG4flcjSI.T, null, option.label), isSelected ? _react.default.createElement("svg", {
       width: "1rem",
       height: "1rem",
       fill: "none",
@@ -29076,7 +29092,7 @@ const Select = ({
       stroke: "currentColor"
     }, _react.default.createElement("path", {
       d: "M5 13l4 4L19 7"
-    })));
+    })) : null);
   })));
 };
 exports.S = Select;
@@ -29107,7 +29123,7 @@ Object.defineProperty(exports, "Margin", {
 Object.defineProperty(exports, "Select", {
   enumerable: true,
   get: function () {
-    return _SelectYW1BMbzQ.S;
+    return _SelectQX_CotrD.S;
   }
 });
 Object.defineProperty(exports, "Text", {
@@ -29120,10 +29136,10 @@ var _ButtonLUnlYWN = require("./Button-LUnlYWN6.js");
 var _Color7TqQC9u = require("./Color-7TqQC-9u.js");
 var _MarginD3UMKZ4Q = require("./Margin-D3UMKZ4Q.js");
 var _TextG4flcjSI = require("./Text-G4flcjSI.js");
-var _SelectYW1BMbzQ = require("./Select-yW1BMbzQ.js");
+var _SelectQX_CotrD = require("./Select-QX_CotrD.js");
 require("react");
 require("@designsystem/foundation");
-},{"./Button-LUnlYWN6.js":"../../../node_modules/@designsystem/react/lib/Button-LUnlYWN6.js","./Color-7TqQC-9u.js":"../../../node_modules/@designsystem/react/lib/Color-7TqQC-9u.js","./Margin-D3UMKZ4Q.js":"../../../node_modules/@designsystem/react/lib/Margin-D3UMKZ4Q.js","./Text-G4flcjSI.js":"../../../node_modules/@designsystem/react/lib/Text-G4flcjSI.js","./Select-yW1BMbzQ.js":"../../../node_modules/@designsystem/react/lib/Select-yW1BMbzQ.js","react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./Button-LUnlYWN6.js":"../../../node_modules/@designsystem/react/lib/Button-LUnlYWN6.js","./Color-7TqQC-9u.js":"../../../node_modules/@designsystem/react/lib/Color-7TqQC-9u.js","./Margin-D3UMKZ4Q.js":"../../../node_modules/@designsystem/react/lib/Margin-D3UMKZ4Q.js","./Text-G4flcjSI.js":"../../../node_modules/@designsystem/react/lib/Text-G4flcjSI.js","./Select-QX_CotrD.js":"../../../node_modules/@designsystem/react/lib/Select-QX_CotrD.js","react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -29219,6 +29235,16 @@ require("@designsystem/scss/lib/Margin.css");
 require("@designsystem/scss/lib/Text.css");
 require("@designsystem/scss/lib/Select.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var options = [{
+  label: 'Strict Black',
+  value: 'strict-black'
+}, {
+  label: 'Heavenly Green',
+  value: 'heavenly-green'
+}, {
+  label: 'Sweet Pink',
+  value: 'pink'
+}];
 var App = function App() {
   return _react.default.createElement("div", null, _react.default.createElement(_react2.Button, {
     label: "Example Button"
@@ -29235,7 +29261,9 @@ var App = function App() {
     width: "xl"
   }))), _react.default.createElement(_react2.Text, {
     size: "xl"
-  }, "This is Text Component"), _react.default.createElement(_react2.Select, null));
+  }, "This is Text Component"), _react.default.createElement(_react2.Select, {
+    options: options
+  }));
 };
 var _default = exports.default = App;
 },{"react":"../../../node_modules/react/index.js","@designsystem/react":"../../../node_modules/@designsystem/react/lib/index.js","@designsystem/scss/lib/Button.css":"../../../node_modules/@designsystem/scss/lib/Button.css","@designsystem/scss/lib/Utilities.css":"../../../node_modules/@designsystem/scss/lib/Utilities.css","@designsystem/scss/lib/Margin.css":"../../../node_modules/@designsystem/scss/lib/Margin.css","@designsystem/scss/lib/Text.css":"../../../node_modules/@designsystem/scss/lib/Text.css","@designsystem/scss/lib/Select.css":"../../../node_modules/@designsystem/scss/lib/Select.css"}],"index.tsx":[function(require,module,exports) {

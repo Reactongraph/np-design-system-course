@@ -14,6 +14,17 @@ import "@designsystem/scss/lib/Text.css";
 import { Select } from "@designsystem/react";
 import "@designsystem/scss/lib/Select.css";
 
+const options = [{
+  label: 'Strict Black',
+  value: 'strict-black'
+}, {
+  label: 'Heavenly Green',
+  value: 'heavenly-green'
+}, {
+  label: 'Sweet Pink',
+  value: 'pink'
+}]
+
 const App = () => {
   return (
     <div>
@@ -25,7 +36,7 @@ const App = () => {
         </Margin>
       </div>
       <Text size="xl">This is Text Component</Text>
-      <Select/>
+      <Select options={options}/>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Text from "../../atoms/Text";
 
@@ -26,11 +26,15 @@ const Select: React.FunctionComponent<SelectProps> = ({
   onOptionSelected: handler,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedIndex, setSelectedIndex] = useState<null | number>(null);
+  const labelRef = useRef<HTMLButtonElement>(null);
+  const [overlayTop, setOverlayTop] = useState<number>(0);
 
   const onOptionSelected = (option: SelectOption, optionIndex: number) => {
     if (handler) {
       handler(option, optionIndex);
     }
+    setSelectedIndex(optionIndex);
     setIsOpen(false);
   };
 
@@ -38,10 +42,23 @@ const Select: React.FunctionComponent<SelectProps> = ({
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    setOverlayTop((labelRef.current?.offsetHeight || 0) + 10);
+  }, [labelRef.current?.offsetHeight]);
+
+  let selectedOption = null;
+
+  if (selectedIndex !== null) {
+    selectedOption = options[selectedIndex];
+  }
   return (
     <div className="dse-select">
-      <button className="dse-select__label" onClick={() => onLabelClick()}>
-        <Text>{label}</Text>
+      <button
+        className="dse-select__label"
+        ref={labelRef}
+        onClick={() => onLabelClick()}
+      >
+        <Text>{selectedOption === null ? label : selectedOption.label}</Text>
 
         <svg
           width="1rem"
@@ -59,28 +76,32 @@ const Select: React.FunctionComponent<SelectProps> = ({
 
       {
         <ul
+          style={{ top: overlayTop }}
           id="dse-select-list"
           className={`dse-select__overlay ${
             isOpen ? "dse-select__overlay--open" : ""
           }`}
         >
           {options.map((option, optionIndex) => {
+            const isSelected = selectedIndex === optionIndex;
             return (
               <li onClick={() => onOptionSelected(option, optionIndex)}>
                 <Text>{option.label}</Text>
 
-                <svg
-                  width="1rem"
-                  height="1rem"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M5 13l4 4L19 7" />
-                </svg>
+                {isSelected ? (
+                  <svg
+                    width="1rem"
+                    height="1rem"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M5 13l4 4L19 7" />
+                  </svg>
+                ) : null}
               </li>
             );
           })}
