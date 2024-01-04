@@ -28886,7 +28886,7 @@ exports.B = Button;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "default", {
+Object.defineProperty(exports, "Button", {
   enumerable: true,
   get: function () {
     return _ButtonLUnlYWN.B;
@@ -28951,30 +28951,6 @@ module.exports = reloadCSS;
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../node_modules/@designsystem/scss/lib/Utilities.css":[function(require,module,exports) {
-
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../node_modules/@designsystem/scss/lib/Margin.css":[function(require,module,exports) {
-
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../node_modules/@designsystem/scss/lib/Text.css":[function(require,module,exports) {
-
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../node_modules/@designsystem/scss/lib/Select.css":[function(require,module,exports) {
-
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
 },{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"App.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -28983,46 +28959,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
-var _react2 = _interopRequireDefault(require("@designsystem/react"));
+var _react2 = require("@designsystem/react");
 require("@designsystem/scss/lib/Button.css");
-require("@designsystem/scss/lib/Utilities.css");
-require("@designsystem/scss/lib/Margin.css");
-require("@designsystem/scss/lib/Text.css");
-require("@designsystem/scss/lib/Select.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-var options = [{
-  label: 'Strict Black',
-  value: 'strict-black'
-}, {
-  label: 'Heavenly Green',
-  value: 'heavenly-green'
-}, {
-  label: 'Sweet Pink',
-  value: 'pink'
-}];
 var App = function App() {
-  return _react.default.createElement("div", null, _react.default.createElement(_react2.default, {
+  return _react.default.createElement("div", null, _react.default.createElement(_react2.Button, {
     label: "Example Button"
-  }), _react.default.createElement("div", null, _react.default.createElement(_react2.default, {
-    space: "lg",
-    left: true
-  }), _react.default.createElement(_react2.default, {
-    hexcode: "black",
-    height: "lg",
-    width: "lg"
-  })), _react.default.createElement(_react2.default, {
-    size: "lg",
-    text: "This is Text Component"
-  }), _react.default.createElement("div", {
-    style: {
-      padding: "40px"
-    }
-  }, _react.default.createElement(_react2.default, {
-    options: options
-  })));
+  }));
 };
 var _default = exports.default = App;
-},{"react":"../../../node_modules/react/index.js","@designsystem/react":"../../../node_modules/@designsystem/react/lib/index.js","@designsystem/scss/lib/Button.css":"../../../node_modules/@designsystem/scss/lib/Button.css","@designsystem/scss/lib/Utilities.css":"../../../node_modules/@designsystem/scss/lib/Utilities.css","@designsystem/scss/lib/Margin.css":"../../../node_modules/@designsystem/scss/lib/Margin.css","@designsystem/scss/lib/Text.css":"../../../node_modules/@designsystem/scss/lib/Text.css","@designsystem/scss/lib/Select.css":"../../../node_modules/@designsystem/scss/lib/Select.css"}],"index.tsx":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js","@designsystem/react":"../../../node_modules/@designsystem/react/lib/index.js","@designsystem/scss/lib/Button.css":"../../../node_modules/@designsystem/scss/lib/Button.css"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -29056,7 +29002,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37065" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44219" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
