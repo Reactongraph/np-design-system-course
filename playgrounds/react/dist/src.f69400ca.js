@@ -29017,7 +29017,7 @@ const Text = ({
   }, children);
 };
 exports.T = Text;
-},{"react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/@designsystem/react/lib/Select-FdVF8ecE.js":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/@designsystem/react/lib/Select-PvJ2jMT7.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29031,7 +29031,8 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 const Select = ({
   options = [],
   label = "Please select an option ...",
-  onOptionSelected: handler
+  onOptionSelected: handler,
+  renderOption
 }) => {
   const [isOpen, setIsOpen] = (0, _react.useState)(false);
   const [selectedIndex, setSelectedIndex] = (0, _react.useState)(null);
@@ -29061,7 +29062,7 @@ const Select = ({
     ref: labelRef,
     onClick: () => onLabelClick()
   }, _react.default.createElement(_TextG4flcjSI.T, null, selectedOption === null ? label : selectedOption.label), _react.default.createElement("svg", {
-    className: `dse-select__caret ${isOpen ? 'dse-select__caret--open' : 'dse-select__caret--closed'}`,
+    className: `dse-select__caret ${isOpen ? "dse-select__caret--open" : "dse-select__caret--closed"}`,
     width: "1rem",
     height: "1rem",
     fill: "none",
@@ -29080,8 +29081,25 @@ const Select = ({
     className: `dse-select__overlay ${isOpen ? "dse-select__overlay--open" : ""}`
   }, options.map((option, optionIndex) => {
     const isSelected = selectedIndex === optionIndex;
+    const renderOptionProps = {
+      option,
+      isSelected,
+      getOptionRecommendedProps: (overrideProps = {}) => {
+        return {
+          className: `dse-select__option ${isSelected ? 'dse-select__option--selected' : ''}`,
+          key: option.value,
+          onClick: () => onOptionSelected(option, optionIndex),
+          ...overrideProps
+        };
+      }
+    };
+    if (renderOption) {
+      return renderOption(renderOptionProps);
+    }
     return _react.default.createElement("li", {
-      onClick: () => onOptionSelected(option, optionIndex)
+      onClick: () => onOptionSelected(option, optionIndex),
+      key: option.value,
+      className: `dse-select__option ${isSelected ? 'dse-select__option--selected ' : ''}`
     }, _react.default.createElement(_TextG4flcjSI.T, null, option.label), isSelected ? _react.default.createElement("svg", {
       width: "1rem",
       height: "1rem",
@@ -29124,7 +29142,7 @@ Object.defineProperty(exports, "Margin", {
 Object.defineProperty(exports, "Select", {
   enumerable: true,
   get: function () {
-    return _SelectFdVF8ecE.S;
+    return _SelectPvJ2jMT.S;
   }
 });
 Object.defineProperty(exports, "Text", {
@@ -29137,10 +29155,10 @@ var _ButtonLUnlYWN = require("./Button-LUnlYWN6.js");
 var _Color7TqQC9u = require("./Color-7TqQC-9u.js");
 var _MarginD3UMKZ4Q = require("./Margin-D3UMKZ4Q.js");
 var _TextG4flcjSI = require("./Text-G4flcjSI.js");
-var _SelectFdVF8ecE = require("./Select-FdVF8ecE.js");
+var _SelectPvJ2jMT = require("./Select-PvJ2jMT7.js");
 require("react");
 require("@designsystem/foundation");
-},{"./Button-LUnlYWN6.js":"../../../node_modules/@designsystem/react/lib/Button-LUnlYWN6.js","./Color-7TqQC-9u.js":"../../../node_modules/@designsystem/react/lib/Color-7TqQC-9u.js","./Margin-D3UMKZ4Q.js":"../../../node_modules/@designsystem/react/lib/Margin-D3UMKZ4Q.js","./Text-G4flcjSI.js":"../../../node_modules/@designsystem/react/lib/Text-G4flcjSI.js","./Select-FdVF8ecE.js":"../../../node_modules/@designsystem/react/lib/Select-FdVF8ecE.js","react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./Button-LUnlYWN6.js":"../../../node_modules/@designsystem/react/lib/Button-LUnlYWN6.js","./Color-7TqQC-9u.js":"../../../node_modules/@designsystem/react/lib/Color-7TqQC-9u.js","./Margin-D3UMKZ4Q.js":"../../../node_modules/@designsystem/react/lib/Margin-D3UMKZ4Q.js","./Text-G4flcjSI.js":"../../../node_modules/@designsystem/react/lib/Text-G4flcjSI.js","./Select-PvJ2jMT7.js":"../../../node_modules/@designsystem/react/lib/Select-PvJ2jMT7.js","react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -29301,7 +29319,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38265" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44989" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
