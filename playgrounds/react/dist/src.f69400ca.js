@@ -29017,7 +29017,7 @@ const Text = ({
   }, children);
 };
 exports.T = Text;
-},{"react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/@designsystem/react/lib/Select-QX_CotrD.js":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/@designsystem/react/lib/Select-FdVF8ecE.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29061,6 +29061,7 @@ const Select = ({
     ref: labelRef,
     onClick: () => onLabelClick()
   }, _react.default.createElement(_TextG4flcjSI.T, null, selectedOption === null ? label : selectedOption.label), _react.default.createElement("svg", {
+    className: `dse-select__caret ${isOpen ? 'dse-select__caret--open' : 'dse-select__caret--closed'}`,
     width: "1rem",
     height: "1rem",
     fill: "none",
@@ -29123,7 +29124,7 @@ Object.defineProperty(exports, "Margin", {
 Object.defineProperty(exports, "Select", {
   enumerable: true,
   get: function () {
-    return _SelectQX_CotrD.S;
+    return _SelectFdVF8ecE.S;
   }
 });
 Object.defineProperty(exports, "Text", {
@@ -29136,10 +29137,10 @@ var _ButtonLUnlYWN = require("./Button-LUnlYWN6.js");
 var _Color7TqQC9u = require("./Color-7TqQC-9u.js");
 var _MarginD3UMKZ4Q = require("./Margin-D3UMKZ4Q.js");
 var _TextG4flcjSI = require("./Text-G4flcjSI.js");
-var _SelectQX_CotrD = require("./Select-QX_CotrD.js");
+var _SelectFdVF8ecE = require("./Select-FdVF8ecE.js");
 require("react");
 require("@designsystem/foundation");
-},{"./Button-LUnlYWN6.js":"../../../node_modules/@designsystem/react/lib/Button-LUnlYWN6.js","./Color-7TqQC-9u.js":"../../../node_modules/@designsystem/react/lib/Color-7TqQC-9u.js","./Margin-D3UMKZ4Q.js":"../../../node_modules/@designsystem/react/lib/Margin-D3UMKZ4Q.js","./Text-G4flcjSI.js":"../../../node_modules/@designsystem/react/lib/Text-G4flcjSI.js","./Select-QX_CotrD.js":"../../../node_modules/@designsystem/react/lib/Select-QX_CotrD.js","react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./Button-LUnlYWN6.js":"../../../node_modules/@designsystem/react/lib/Button-LUnlYWN6.js","./Color-7TqQC-9u.js":"../../../node_modules/@designsystem/react/lib/Color-7TqQC-9u.js","./Margin-D3UMKZ4Q.js":"../../../node_modules/@designsystem/react/lib/Margin-D3UMKZ4Q.js","./Text-G4flcjSI.js":"../../../node_modules/@designsystem/react/lib/Text-G4flcjSI.js","./Select-FdVF8ecE.js":"../../../node_modules/@designsystem/react/lib/Select-FdVF8ecE.js","react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {

@@ -61,6 +61,7 @@ const Select: React.FunctionComponent<SelectProps> = ({
         <Text>{selectedOption === null ? label : selectedOption.label}</Text>
 
         <svg
+        className={`dse-select__caret ${isOpen ? 'dse-select__caret--open' : 'dse-select__caret--closed'}`} 
           width="1rem"
           height="1rem"
           fill="none"
