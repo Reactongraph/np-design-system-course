@@ -29017,7 +29017,7 @@ const Text = ({
   }, children);
 };
 exports.T = Text;
-},{"react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/@designsystem/react/lib/Select-PvJ2jMT7.js":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/@designsystem/react/lib/Select-kPSRlRNU.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29028,15 +29028,42 @@ var _react = _interopRequireWildcard(require("react"));
 var _TextG4flcjSI = require("./Text-G4flcjSI.js");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+const KEY_CODES = {
+  ENTER: 13,
+  SPACE: 32,
+  DOWN_ARROW: 40,
+  ESC: 27,
+  UP_ARROW: 38
+};
+const getPreviousOptionIndex = (currentIndex, options) => {
+  if (currentIndex === null) {
+    return 0;
+  }
+  if (currentIndex === 0) {
+    return options.length - 1;
+  }
+  return currentIndex - 1;
+};
+const getNextOptionIndex = (currentIndex, options) => {
+  if (currentIndex === null) {
+    return 0;
+  }
+  if (currentIndex === options.length - 1) {
+    return 0;
+  }
+  return currentIndex + 1;
+};
 const Select = ({
   options = [],
-  label = "Please select an option ...",
+  label = 'Please select an option ...',
   onOptionSelected: handler,
   renderOption
 }) => {
   const [isOpen, setIsOpen] = (0, _react.useState)(false);
   const [selectedIndex, setSelectedIndex] = (0, _react.useState)(null);
+  const [highlightedIndex, setHighlightedIndex] = (0, _react.useState)(null);
   const labelRef = (0, _react.useRef)(null);
+  const [optionRefs, setOptionRefs] = (0, _react.useState)([]);
   const [overlayTop, setOverlayTop] = (0, _react.useState)(0);
   const onOptionSelected = (option, optionIndex) => {
     if (handler) {
@@ -29055,16 +29082,58 @@ const Select = ({
   if (selectedIndex !== null) {
     selectedOption = options[selectedIndex];
   }
+  const highlightOption = optionIndex => {
+    setHighlightedIndex(optionIndex);
+  };
+  const onButtonKeyDown = event => {
+    event.preventDefault();
+    if ([KEY_CODES.ENTER, KEY_CODES.SPACE, KEY_CODES.DOWN_ARROW].includes(event.keyCode)) {
+      setIsOpen(true);
+      // set focus on the list item
+      highlightOption(0);
+    }
+  };
+  (0, _react.useEffect)(() => {
+    setOptionRefs(options.map(_ => (0, _react.createRef)()));
+  }, [options.length]);
+  (0, _react.useEffect)(() => {
+    if (highlightedIndex !== null && isOpen) {
+      const ref = optionRefs[highlightedIndex];
+      if (ref && ref.current) {
+        ref.current.focus();
+      }
+    }
+  }, [isOpen, highlightedIndex]);
+  const onOptionKeyDown = event => {
+    if (event.keyCode === KEY_CODES.ESC) {
+      setIsOpen(false);
+      return;
+    }
+    if (event.keyCode === KEY_CODES.DOWN_ARROW) {
+      highlightOption(getNextOptionIndex(highlightedIndex, options));
+    }
+    if (event.keyCode === KEY_CODES.UP_ARROW) {
+      highlightOption(getPreviousOptionIndex(highlightedIndex, options));
+    }
+    if (event.keyCode === KEY_CODES.ENTER) {
+      onOptionSelected(options[highlightedIndex], highlightedIndex);
+    }
+  };
   return _react.default.createElement("div", {
-    className: "dse-select"
+    className: 'dse-select'
   }, _react.default.createElement("button", {
-    className: "dse-select__label",
+    "data-testid": 'DseSelectButton',
+    onKeyDown: onButtonKeyDown,
+    "aria-controls": 'dse-select-list',
+    "aria-haspopup": true,
+    "aria-expanded": isOpen ? true : undefined,
     ref: labelRef,
+    className: 'dse-select__label',
     onClick: () => onLabelClick()
   }, _react.default.createElement(_TextG4flcjSI.T, null, selectedOption === null ? label : selectedOption.label), _react.default.createElement("svg", {
-    className: `dse-select__caret ${isOpen ? "dse-select__caret--open" : "dse-select__caret--closed"}`,
-    width: "1rem",
-    height: "1rem",
+    className: `dse-select__caret ${isOpen ? 'dse-select__caret--open' : 'dse-select__caret--closed'}`,
+    width: '1rem',
+    height: '1rem',
     fill: "none",
     strokeLinecap: "round",
     strokeLinejoin: "round",
@@ -29074,19 +29143,35 @@ const Select = ({
   }, _react.default.createElement("path", {
     d: "M19 9l-7 7-7-7"
   }))), _react.default.createElement("ul", {
+    role: 'menu',
+    "aria-hidden": isOpen ? undefined : false,
+    id: 'dse-select-list',
     style: {
       top: overlayTop
     },
-    id: "dse-select-list",
-    className: `dse-select__overlay ${isOpen ? "dse-select__overlay--open" : ""}`
+    className: `dse-select__overlay ${isOpen ? 'dse-select__overlay--open' : ''}`
   }, options.map((option, optionIndex) => {
     const isSelected = selectedIndex === optionIndex;
+    const isHighlighted = highlightedIndex === optionIndex;
+    const ref = optionRefs[optionIndex];
     const renderOptionProps = {
+      ref,
       option,
       isSelected,
       getOptionRecommendedProps: (overrideProps = {}) => {
         return {
-          className: `dse-select__option ${isSelected ? 'dse-select__option--selected' : ''}`,
+          ref,
+          role: 'menuitemradio',
+          'aria-label': option.label,
+          'aria-checked': isSelected ? true : undefined,
+          onKeyDown: onOptionKeyDown,
+          tabIndex: isHighlighted ? -1 : 0,
+          onMouseEnter: () => highlightOption(optionIndex),
+          onMouseLeave: () => highlightOption(null),
+          className: `dse-select__option
+                                ${isSelected ? 'dse-select__option--selected' : ''}
+                                ${isHighlighted ? 'dse-select__option--highlighted' : ''}
+                            `,
           key: option.value,
           onClick: () => onOptionSelected(option, optionIndex),
           ...overrideProps
@@ -29097,12 +29182,10 @@ const Select = ({
       return renderOption(renderOptionProps);
     }
     return _react.default.createElement("li", {
-      onClick: () => onOptionSelected(option, optionIndex),
-      key: option.value,
-      className: `dse-select__option ${isSelected ? 'dse-select__option--selected ' : ''}`
+      ...renderOptionProps.getOptionRecommendedProps()
     }, _react.default.createElement(_TextG4flcjSI.T, null, option.label), isSelected ? _react.default.createElement("svg", {
-      width: "1rem",
-      height: "1rem",
+      width: '1rem',
+      height: '1rem',
       fill: "none",
       strokeLinecap: "round",
       strokeLinejoin: "round",
@@ -29142,7 +29225,7 @@ Object.defineProperty(exports, "Margin", {
 Object.defineProperty(exports, "Select", {
   enumerable: true,
   get: function () {
-    return _SelectPvJ2jMT.S;
+    return _SelectKPSRlRNU.S;
   }
 });
 Object.defineProperty(exports, "Text", {
@@ -29155,10 +29238,10 @@ var _ButtonLUnlYWN = require("./Button-LUnlYWN6.js");
 var _Color7TqQC9u = require("./Color-7TqQC-9u.js");
 var _MarginD3UMKZ4Q = require("./Margin-D3UMKZ4Q.js");
 var _TextG4flcjSI = require("./Text-G4flcjSI.js");
-var _SelectPvJ2jMT = require("./Select-PvJ2jMT7.js");
+var _SelectKPSRlRNU = require("./Select-kPSRlRNU.js");
 require("react");
 require("@designsystem/foundation");
-},{"./Button-LUnlYWN6.js":"../../../node_modules/@designsystem/react/lib/Button-LUnlYWN6.js","./Color-7TqQC-9u.js":"../../../node_modules/@designsystem/react/lib/Color-7TqQC-9u.js","./Margin-D3UMKZ4Q.js":"../../../node_modules/@designsystem/react/lib/Margin-D3UMKZ4Q.js","./Text-G4flcjSI.js":"../../../node_modules/@designsystem/react/lib/Text-G4flcjSI.js","./Select-PvJ2jMT7.js":"../../../node_modules/@designsystem/react/lib/Select-PvJ2jMT7.js","react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./Button-LUnlYWN6.js":"../../../node_modules/@designsystem/react/lib/Button-LUnlYWN6.js","./Color-7TqQC-9u.js":"../../../node_modules/@designsystem/react/lib/Color-7TqQC-9u.js","./Margin-D3UMKZ4Q.js":"../../../node_modules/@designsystem/react/lib/Margin-D3UMKZ4Q.js","./Text-G4flcjSI.js":"../../../node_modules/@designsystem/react/lib/Text-G4flcjSI.js","./Select-kPSRlRNU.js":"../../../node_modules/@designsystem/react/lib/Select-kPSRlRNU.js","react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -29319,7 +29402,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44989" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41391" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
