@@ -11,6 +11,9 @@ import "@designsystem/scss/lib/Margin.css";
 import { Text } from "@designsystem/react";
 import "@designsystem/scss/lib/Text.css";
 
+import { Select } from "@designsystem/react";
+import "@designsystem/scss/lib/Select.css";
+
 const App = () => {
   return (
     <div>
@@ -22,6 +25,7 @@ const App = () => {
         </Margin>
       </div>
       <Text size="xl">This is Text Component</Text>
+      <Select/>
     </div>
   );
 };
