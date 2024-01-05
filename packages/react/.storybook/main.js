@@ -4,7 +4,12 @@ module.exports = {
     builder: "webpack5",
   },
   stories: ["../src/**/*.stories.tsx"],
-  addons: [getAbsolutePath("@storybook/preset-typescript")],
+  addons: [
+    getAbsolutePath(
+      "@storybook/preset-typescript",
+      'storybook/addon-storysource'
+    ),
+  ],
 
   docs: {
     autodocs: true,
