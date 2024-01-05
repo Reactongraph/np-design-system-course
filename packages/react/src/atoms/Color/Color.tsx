@@ -9,8 +9,8 @@ export interface ColorProps {
 
 const Color: React.FunctionComponent<ColorProps> = ({
   hexCode,
-  height,
-  width,
+  height = Spacing.sm,
+  width = Spacing.sm,
 }) => {
   const className = `dse-width-${width} dse-height-${height} `;
   return <div style={{ backgroundColor: hexCode }} className={className}></div>;

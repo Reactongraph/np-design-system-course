@@ -28880,7 +28880,71 @@ const Button = ({
   }, label);
 };
 var _default = exports.default = Button;
-},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@designsystem/react/lib/atoms/Color/Color.js":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@designsystem/foundation/lib/FontSize.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+const fontSizes = {
+  xs: 'xs',
+  sm: 'sm',
+  base: 'base',
+  lg: 'lg',
+  xl: 'xl'
+};
+var _default = exports.default = Object.freeze(fontSizes);
+},{}],"../../../node_modules/@designsystem/foundation/lib/Spacing.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+const spaces = {
+  none: 'none',
+  xxxs: 'xxxs',
+  // 4px
+  xxs: 'xxs',
+  // 8px
+  xs: 'xs',
+  // 12px
+  sm: 'sm',
+  // 16px
+  md: 'md',
+  // 24px
+  lg: 'lg',
+  // 32px
+  xl: 'xl',
+  // 48px
+  xxl: 'xxl',
+  // 72px
+  xxxl: 'xxxl'
+};
+var _default = exports.default = Object.freeze(spaces);
+},{}],"../../../node_modules/@designsystem/foundation/lib/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "FontSize", {
+  enumerable: true,
+  get: function () {
+    return _FontSize.default;
+  }
+});
+Object.defineProperty(exports, "Spacing", {
+  enumerable: true,
+  get: function () {
+    return _Spacing.default;
+  }
+});
+var _FontSize = _interopRequireDefault(require("./FontSize"));
+var _Spacing = _interopRequireDefault(require("./Spacing"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./FontSize":"../../../node_modules/@designsystem/foundation/lib/FontSize.js","./Spacing":"../../../node_modules/@designsystem/foundation/lib/Spacing.js"}],"../../../node_modules/@designsystem/react/lib/atoms/Color/Color.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28888,11 +28952,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
+var _foundation = require("@designsystem/foundation");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 const Color = ({
   hexCode,
-  height,
-  width
+  height = _foundation.Spacing.sm,
+  width = _foundation.Spacing.sm
 }) => {
   const className = `dse-width-${width} dse-height-${height} `;
   return _react.default.createElement("div", {
@@ -28903,7 +28968,7 @@ const Color = ({
   });
 };
 var _default = exports.default = Color;
-},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@designsystem/react/lib/atoms/Margin/Margin.js":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/@designsystem/react/lib/atoms/Margin/Margin.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28941,63 +29006,7 @@ const Margin = ({
   }, children);
 };
 var _default = exports.default = Margin;
-},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@designsystem/foundation/lib/FontSize.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-const fontSizes = {
-  xs: "xs",
-  sm: "sm",
-  base: "base",
-  lg: "lg",
-  xl: "xl"
-};
-var _default = exports.default = Object.freeze(fontSizes);
-},{}],"../../../node_modules/@designsystem/foundation/lib/Spacing.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-const spaces = {
-  none: "none",
-  xxxs: "xxxs",
-  xxs: "xxs",
-  xs: "xs",
-  sm: "sm",
-  md: "md",
-  lg: "lg",
-  xl: "xl",
-  xxl: "xxl",
-  xxxl: "xxxl"
-};
-var _default = exports.default = Object.freeze(spaces);
-},{}],"../../../node_modules/@designsystem/foundation/lib/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "FontSize", {
-  enumerable: true,
-  get: function () {
-    return _FontSize.default;
-  }
-});
-Object.defineProperty(exports, "Spacing", {
-  enumerable: true,
-  get: function () {
-    return _Spacing.default;
-  }
-});
-var _FontSize = _interopRequireDefault(require("./FontSize"));
-var _Spacing = _interopRequireDefault(require("./Spacing"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./FontSize":"../../../node_modules/@designsystem/foundation/lib/FontSize.js","./Spacing":"../../../node_modules/@designsystem/foundation/lib/Spacing.js"}],"../../../node_modules/@designsystem/react/lib/atoms/Text/Text.js":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@designsystem/react/lib/atoms/Text/Text.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

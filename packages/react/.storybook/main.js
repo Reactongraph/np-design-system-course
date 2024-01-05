@@ -1,14 +1,15 @@
 import { dirname, join } from "path";
+
 module.exports = {
   core: {
     builder: "webpack5",
   },
   stories: ["../src/**/*.stories.tsx"],
   addons: [
-    getAbsolutePath(
-      "@storybook/preset-typescript",
-      'storybook/addon-storysource'
-    ),
+    "@storybook/addon-storysource",
+    "@storybook/addon-knobs",
+    "@storybook/addon-a11y",
+    getAbsolutePath("@storybook/preset-typescript"),
   ],
 
   docs: {
