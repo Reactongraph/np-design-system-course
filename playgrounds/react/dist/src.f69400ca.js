@@ -28863,13 +28863,13 @@ if ("development" === 'production') {
     }
   };
 }
-},{"react-dom":"../../../node_modules/react-dom/index.js"}],"../../../node_modules/@designsystem/react/lib/Button-LUnlYWN6.js":[function(require,module,exports) {
+},{"react-dom":"../../../node_modules/react-dom/index.js"}],"../../../node_modules/@designsystem/react/lib/atoms/Button/Button.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.B = void 0;
+exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 const Button = ({
@@ -28879,14 +28879,14 @@ const Button = ({
     className: "dse-button-container"
   }, label);
 };
-exports.B = Button;
-},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@designsystem/react/lib/Color-7TqQC-9u.js":[function(require,module,exports) {
+var _default = exports.default = Button;
+},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@designsystem/react/lib/atoms/Color/Color.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.C = void 0;
+exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 const Color = ({
@@ -28902,14 +28902,14 @@ const Color = ({
     className: className
   });
 };
-exports.C = Color;
-},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@designsystem/react/lib/Margin-D3UMKZ4Q.js":[function(require,module,exports) {
+var _default = exports.default = Color;
+},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@designsystem/react/lib/atoms/Margin/Margin.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.M = void 0;
+exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 const Margin = ({
@@ -28940,7 +28940,7 @@ const Margin = ({
     className: className
   }, children);
 };
-exports.M = Margin;
+var _default = exports.default = Margin;
 },{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@designsystem/foundation/lib/FontSize.js":[function(require,module,exports) {
 "use strict";
 
@@ -28997,13 +28997,13 @@ Object.defineProperty(exports, "Spacing", {
 var _FontSize = _interopRequireDefault(require("./FontSize"));
 var _Spacing = _interopRequireDefault(require("./Spacing"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./FontSize":"../../../node_modules/@designsystem/foundation/lib/FontSize.js","./Spacing":"../../../node_modules/@designsystem/foundation/lib/Spacing.js"}],"../../../node_modules/@designsystem/react/lib/Text-G4flcjSI.js":[function(require,module,exports) {
+},{"./FontSize":"../../../node_modules/@designsystem/foundation/lib/FontSize.js","./Spacing":"../../../node_modules/@designsystem/foundation/lib/Spacing.js"}],"../../../node_modules/@designsystem/react/lib/atoms/Text/Text.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.T = void 0;
+exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _foundation = require("@designsystem/foundation");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -29016,19 +29016,20 @@ const Text = ({
     className: className
   }, children);
 };
-exports.T = Text;
-},{"react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/@designsystem/react/lib/Select-kPSRlRNU.js":[function(require,module,exports) {
+var _default = exports.default = Text;
+},{"react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/@designsystem/react/lib/molecules/Select/Select.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.S = void 0;
+exports.default = exports.KEY_CODES = void 0;
 var _react = _interopRequireWildcard(require("react"));
-var _TextG4flcjSI = require("./Text-G4flcjSI.js");
+var _Text = _interopRequireDefault(require("../../atoms/Text/Text.js"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-const KEY_CODES = {
+const KEY_CODES = exports.KEY_CODES = {
   ENTER: 13,
   SPACE: 32,
   DOWN_ARROW: 40,
@@ -29130,7 +29131,7 @@ const Select = ({
     ref: labelRef,
     className: 'dse-select__label',
     onClick: () => onLabelClick()
-  }, _react.default.createElement(_TextG4flcjSI.T, null, selectedOption === null ? label : selectedOption.label), _react.default.createElement("svg", {
+  }, _react.default.createElement(_Text.default, null, selectedOption === null ? label : selectedOption.label), _react.default.createElement("svg", {
     className: `dse-select__caret ${isOpen ? 'dse-select__caret--open' : 'dse-select__caret--closed'}`,
     width: '1rem',
     height: '1rem',
@@ -29183,7 +29184,7 @@ const Select = ({
     }
     return _react.default.createElement("li", {
       ...renderOptionProps.getOptionRecommendedProps()
-    }, _react.default.createElement(_TextG4flcjSI.T, null, option.label), isSelected ? _react.default.createElement("svg", {
+    }, _react.default.createElement(_Text.default, null, option.label), isSelected ? _react.default.createElement("svg", {
       width: '1rem',
       height: '1rem',
       fill: "none",
@@ -29197,8 +29198,8 @@ const Select = ({
     })) : null);
   })));
 };
-exports.S = Select;
-},{"react":"../../../node_modules/react/index.js","./Text-G4flcjSI.js":"../../../node_modules/@designsystem/react/lib/Text-G4flcjSI.js"}],"../../../node_modules/@designsystem/react/lib/index.js":[function(require,module,exports) {
+var _default = exports.default = Select;
+},{"react":"../../../node_modules/react/index.js","../../atoms/Text/Text.js":"../../../node_modules/@designsystem/react/lib/atoms/Text/Text.js"}],"../../../node_modules/@designsystem/react/lib/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29207,41 +29208,40 @@ Object.defineProperty(exports, "__esModule", {
 Object.defineProperty(exports, "Button", {
   enumerable: true,
   get: function () {
-    return _ButtonLUnlYWN.B;
+    return _Button.default;
   }
 });
 Object.defineProperty(exports, "Color", {
   enumerable: true,
   get: function () {
-    return _Color7TqQC9u.C;
+    return _Color.default;
   }
 });
 Object.defineProperty(exports, "Margin", {
   enumerable: true,
   get: function () {
-    return _MarginD3UMKZ4Q.M;
+    return _Margin.default;
   }
 });
 Object.defineProperty(exports, "Select", {
   enumerable: true,
   get: function () {
-    return _SelectKPSRlRNU.S;
+    return _Select.default;
   }
 });
 Object.defineProperty(exports, "Text", {
   enumerable: true,
   get: function () {
-    return _TextG4flcjSI.T;
+    return _Text.default;
   }
 });
-var _ButtonLUnlYWN = require("./Button-LUnlYWN6.js");
-var _Color7TqQC9u = require("./Color-7TqQC-9u.js");
-var _MarginD3UMKZ4Q = require("./Margin-D3UMKZ4Q.js");
-var _TextG4flcjSI = require("./Text-G4flcjSI.js");
-var _SelectKPSRlRNU = require("./Select-kPSRlRNU.js");
-require("react");
-require("@designsystem/foundation");
-},{"./Button-LUnlYWN6.js":"../../../node_modules/@designsystem/react/lib/Button-LUnlYWN6.js","./Color-7TqQC-9u.js":"../../../node_modules/@designsystem/react/lib/Color-7TqQC-9u.js","./Margin-D3UMKZ4Q.js":"../../../node_modules/@designsystem/react/lib/Margin-D3UMKZ4Q.js","./Text-G4flcjSI.js":"../../../node_modules/@designsystem/react/lib/Text-G4flcjSI.js","./Select-kPSRlRNU.js":"../../../node_modules/@designsystem/react/lib/Select-kPSRlRNU.js","react":"../../../node_modules/react/index.js","@designsystem/foundation":"../../../node_modules/@designsystem/foundation/lib/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var _Button = _interopRequireDefault(require("./atoms/Button/Button.js"));
+var _Color = _interopRequireDefault(require("./atoms/Color/Color.js"));
+var _Margin = _interopRequireDefault(require("./atoms/Margin/Margin.js"));
+var _Text = _interopRequireDefault(require("./atoms/Text/Text.js"));
+var _Select = _interopRequireDefault(require("./molecules/Select/Select.js"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./atoms/Button/Button.js":"../../../node_modules/@designsystem/react/lib/atoms/Button/Button.js","./atoms/Color/Color.js":"../../../node_modules/@designsystem/react/lib/atoms/Color/Color.js","./atoms/Margin/Margin.js":"../../../node_modules/@designsystem/react/lib/atoms/Margin/Margin.js","./atoms/Text/Text.js":"../../../node_modules/@designsystem/react/lib/atoms/Text/Text.js","./molecules/Select/Select.js":"../../../node_modules/@designsystem/react/lib/molecules/Select/Select.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -29402,7 +29402,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37967" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43389" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
